@@ -2,5 +2,6 @@
 # define _LIB_COMMON_H_
 
 # define WARN_UNUSED_RET __attribute__((warn_unused_result))
+# define UNUSED __attribute__((unused))
 
 #endif /* _LIB_COMMON_H_ */

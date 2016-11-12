@@ -6,3 +6,6 @@ add_library(containers SHARED containers.c
                               hash-map.c
                               hash-functions.c
                               set.c)
+
+add_library(io-service SHARED io-service.c)
+target_link_libraries(io-service containers)
