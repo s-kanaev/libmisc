@@ -9,3 +9,6 @@ add_library(containers SHARED containers.c
 
 add_library(io-service SHARED io-service.c)
 target_link_libraries(io-service containers)
+
+add_library(coroutine SHARED coroutine.c)
+target_link_libraries(coroutine containers)
