@@ -27,4 +27,4 @@ add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(include)
 
-install(FILES libmisc.pc "${DEST_DIR}/share/pkgconfig")
+install(FILES libmisc.pc DESTINATION "${DEST_DIR}/share/pkgconfig")
