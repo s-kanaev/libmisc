@@ -2,6 +2,13 @@ project(robot C)
 cmake_minimum_required(VERSION 2.8)
 add_definitions(-g -Wall -Werror)
 
+set(DEST_DIR ${CMAKE_INSTALL_PREFIX})
+
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/libmisc.pc.in"
+    "${CMAKE_CURRENT_SOURCE_DIR}/libmisc.pc"
+)
+
 option(WITH_COVERAGE "Enable profiling and coverage report analysis" OFF)
 
 if (WITH_COVERAGE)
@@ -19,3 +26,5 @@ enable_testing()
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(include)
+
+install(FILES libmisc.pc "${DEST_DIR}/share/pkgconfig")

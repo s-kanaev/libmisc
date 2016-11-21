@@ -1,0 +1,11 @@
+prefix=@DEST_DIR@
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+libname=misc
+
+Name: miscellaneous
+Description: The miscellaneous library
+Version: 0.0.1
+Cflags: -I${includedir}/${libname}
+Libs: -L${libdir} -l${libname}
