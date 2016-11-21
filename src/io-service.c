@@ -23,13 +23,17 @@ static const int OP_MAP[IO_SVC_OP_COUNT] = {
 /******************************* internal funcs *******************************/
 void _notify(const io_service_t *iosvc) {
     static const uint64_t v = 1;
-    write(iosvc->event_fd, &v, sizeof(v));
+    ssize_t ret = write(iosvc->event_fd, &v, sizeof(v));
+
+    assert(sizeof(v) == ret);
 }
 
 uint64_t _notfied(const io_service_t *iosvc) {
     uint64_t v;
 
-    read(iosvc->event_fd, &v, sizeof(v));
+    ssize_t ret = read(iosvc->event_fd, &v, sizeof(v));
+
+    assert(sizeof(v) == ret);
 
     return v;
 }
