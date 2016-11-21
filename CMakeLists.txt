@@ -7,6 +7,7 @@ set(DEST_DIR ${CMAKE_INSTALL_PREFIX})
 configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/libmisc.pc.in"
     "${CMAKE_CURRENT_SOURCE_DIR}/libmisc.pc"
+    @ONLY
 )
 
 option(WITH_COVERAGE "Enable profiling and coverage report analysis" OFF)
