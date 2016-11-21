@@ -13,5 +13,15 @@ target_link_libraries(io-service containers)
 add_library(coroutine SHARED coroutine.c)
 target_link_libraries(coroutine containers)
 
+set_target_properties(containers PROPERTIES
+                      VERSION 0.0.1
+                      SOVERSION 0)
+set_target_properties(io-service PROPERTIES
+                      VERSION 0.0.1
+                      SOVERSION 0)
+set_target_properties(coroutine PROPERTIES
+                      VERSION 0.0.1
+                      SOVERSION 0)
+
 install(TARGETS containers io-service coroutine
-        LIBRARY DESTINATION lib)
+        LIBRARY DESTINATION lib/misc)
