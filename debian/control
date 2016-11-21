@@ -1,0 +1,21 @@
+Source: libmisc
+Priority: optional
+Maintainer: sergey <sergey@r2c3>
+Build-Depends: debhelper (>= 9), cmake
+Standards-Version: 3.9.5
+Section: libs
+Homepage: https://github.com/ksergy/libmisc
+#Vcs-Git: git://anonscm.debian.org/collab-maint/libmisc.git
+#Vcs-Browser: http://anonscm.debian.org/?p=collab-maint/libmisc.git;a=summary
+
+Package: libmisc-dev
+Section: libdevel
+Architecture: amd64
+Depends: libmisc1 (= ${binary:Version}), ${misc:Depends}
+Description: libmisc development file
+
+Package: libmisc1
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Miscellaneous library
+ The library contains epoll-base IO service, coroutines, containers, etc.
