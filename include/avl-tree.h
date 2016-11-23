@@ -9,6 +9,10 @@
 # include <stddef.h>
 # include <stdint.h>
 
+# ifdef __cplusplus
+extern "C" {
+# endif
+
 struct avl_tree;
 typedef struct avl_tree avl_tree_t;
 
@@ -99,5 +103,9 @@ avl_tree_node_t *avl_tree_node_min(avl_tree_node_t *n);
  */
 avl_tree_node_t *avl_tree_node_max(avl_tree_node_t *n);
 void avl_tree_purge(avl_tree_t *tree);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif

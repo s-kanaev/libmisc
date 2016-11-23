@@ -9,6 +9,10 @@
 # include <stddef.h>
 # include <stdbool.h>
 
+# ifdef __cplusplus
+extern "C" {
+# endif
+
 enum buffer_policy {
     bp_shrinkable          = 0,
     bp_non_shrinkable      = 1,
@@ -185,5 +189,9 @@ list_element_t *list_next(list_t *l, list_element_t *el);
  * \return pointer or \c NULL if there are no more elements
  */
 list_element_t *list_prev(list_t *l, list_element_t *el);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif

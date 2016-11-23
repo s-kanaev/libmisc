@@ -1,6 +1,10 @@
 #ifndef _HASH_MAP_H
 # define _HASH_MAP_H_
 
+# ifdef __cplusplus
+extern "C" {
+# endif
+
 /** \file hash-map.h
  * Hash map library.
  * Hash map is AVL tree with each node as a list of data.
@@ -68,5 +72,9 @@ hash_map_node_element_t *hash_map_node_begin(hash_map_node_t *hmn);
 hash_map_node_element_t *hash_map_node_end(hash_map_node_t *hmn);
 
 void *hash_map_node_element_get_data(const hash_map_node_element_t *el);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif

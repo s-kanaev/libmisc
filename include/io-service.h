@@ -8,6 +8,10 @@
 # include <pthread.h>
 # include <sys/epoll.h>
 
+# ifdef __cplusplus
+extern "C" {
+# endif
+
 struct io_service;
 typedef struct io_service io_service_t;
 
@@ -101,5 +105,9 @@ void io_service_unwatch_fd_masked(io_service_t *iosvc,
 void io_service_deinit(io_service_t *iosvc);
 void io_service_run(io_service_t *iosvc);
 void io_service_stop(io_service_t *iosvc, bool wait_pending);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif /* _IO_SERVICE_H_ */

@@ -7,6 +7,10 @@
 # include <stddef.h>
 # include <stdint.h>
 
+# ifdef __cplusplus
+extern "C" {
+# endif
+
 struct coroutine;
 typedef struct coroutine coroutine_t;
 
@@ -31,5 +35,9 @@ void coroutine_deinit(coroutine_t *cr);
 void coroutine_continue(coroutine_t *cr);
 bool coroutine_returned(const coroutine_t *cr);
 void coroutine_yield(coroutine_t *cr);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif /* _COROUTINE_H_ */

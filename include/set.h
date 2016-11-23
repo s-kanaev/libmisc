@@ -6,6 +6,10 @@
 # include <stdbool.h>
 # include <stddef.h>
 
+# ifdef __cplusplus
+extern "C" {
+# endif
+
 typedef struct set {
     avl_tree_t tree;
 } set_t;
@@ -36,5 +40,9 @@ set_iterator_t set_prev(set_t *s, avl_tree_node_t *el);
 
 set_key_t set_get_data(avl_tree_node_t *el);
 set_counter_t set_data_count(avl_tree_node_t *el);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif /* _SET_H_ */
