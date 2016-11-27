@@ -8,4 +8,4 @@ Name: miscellaneous
 Description: The miscellaneous library
 Version: 0.0.1
 Cflags: -I${includedir}/${libname}
-Libs: -L${libdir} -l${libname}
+Libs: -L${libdir}/${libname} -lcontainers -lcoroutine -lio-service
