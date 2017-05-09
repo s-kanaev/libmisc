@@ -7,6 +7,7 @@
 # include <stdbool.h>
 # include <pthread.h>
 # include <sys/epoll.h>
+# include <stdatomic.h>
 
 # ifdef __cplusplus
 extern "C" {

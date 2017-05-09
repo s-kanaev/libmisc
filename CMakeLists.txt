@@ -24,8 +24,11 @@ endif (WITH_COVERAGE)
 
 enable_testing()
 
+add_definitions(-std=gnu11)
+
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(include)
 
 install(FILES libmisc.pc DESTINATION "${DEST_DIR}/share/pkgconfig")
+
