@@ -6,4 +6,4 @@ temp
 *.user
 *.orig
 *.kdev4
-
+*.pc
