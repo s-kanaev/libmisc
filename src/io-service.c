@@ -26,6 +26,7 @@ void _notify(const io_service_t *iosvc) {
     ssize_t ret = write(iosvc->event_fd, &v, sizeof(v));
 
     assert(sizeof(v) == ret);
+    DONT_USE(ret);
 }
 
 uint64_t _notfied(const io_service_t *iosvc) {
@@ -34,6 +35,7 @@ uint64_t _notfied(const io_service_t *iosvc) {
     ssize_t ret = read(iosvc->event_fd, &v, sizeof(v));
 
     assert(sizeof(v) == ret);
+    DONT_USE(ret);
 
     return v;
 }
@@ -109,6 +111,7 @@ void _run_masked(io_service_t *iosvc,
     if (oneshot) {
         rc = epoll_ctl(iosvc->epoll_fd, EPOLL_CTL_DEL, fd, &fd_desc->event);
         assert(0 == rc);
+        DONT_USE(rc);
 
         avl_tree_remove(&iosvc->fd_map, fd_desc->fd);
     }
@@ -144,6 +147,7 @@ void _run_unmasked(io_service_t *iosvc,
             if (!fd_desc->event.events) {
                 rc = epoll_ctl(iosvc->epoll_fd, EPOLL_CTL_DEL, fd, &fd_desc->event);
                 assert(rc);
+                DONT_USE(rc);
 
                 avl_tree_remove(&iosvc->fd_map, fd);
             }
@@ -189,6 +193,7 @@ void io_service_init(io_service_t *iosvc) {
     rc = pthread_mutex_init(&iosvc->mtx, NULL);
 
     assert(rc);
+    DONT_USE(rc);
 
     iosvc->event_fd = eventfd(0, EFD_CLOEXEC);
     assert(iosvc->event_fd >= 0);
@@ -220,6 +225,7 @@ void io_service_deinit(io_service_t *iosvc) {
 
     rc = pthread_mutex_destroy(&iosvc->mtx);
     assert(rc);
+    DONT_USE(rc);
 }
 
 void io_service_enqueue_function(io_service_t *iosvc,
@@ -303,6 +309,7 @@ void io_service_watch_fd(io_service_t *iosvc,
                    fd_desc->fd, &fd_desc->event);
 
     assert(0 == rc);
+    DONT_USE(rc);
 
     pthread_mutex_unlock(&iosvc->mtx);
 }
@@ -353,6 +360,7 @@ void io_service_unwatch_fd(io_service_t *iosvc,
                    fd, ptr);
 
     assert(0 == rc);
+    DONT_USE(rc);
 
     pthread_mutex_unlock(&iosvc->mtx);
 }
@@ -423,6 +431,7 @@ void io_service_watch_fd_masked(io_service_t *iosvc,
                    fd_desc->fd, &fd_desc->event);
 
     assert(0 == rc);
+    DONT_USE(rc);
 
     pthread_mutex_unlock(&iosvc->mtx);
 }
@@ -451,6 +460,7 @@ void io_service_unwatch_fd_masked(io_service_t *iosvc, int fd) {
     fd_desc = atn_fd->data;
 
     assert(fd_desc->masked);
+    DONT_USE(fd_desc);
 
     epoll_ctl_op = EPOLL_CTL_DEL;
     ptr = NULL;
@@ -461,6 +471,7 @@ void io_service_unwatch_fd_masked(io_service_t *iosvc, int fd) {
                    fd, ptr);
 
     assert(0 == rc);
+    DONT_USE(rc);
 
     pthread_mutex_unlock(&iosvc->mtx);
 }

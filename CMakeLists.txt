@@ -22,6 +22,8 @@ if (WITH_COVERAGE)
         CACHE INTERNAL "" FORCE)
 endif (WITH_COVERAGE)
 
+set(thelibname libmisc)
+
 enable_testing()
 
 add_definitions(-std=gnu11)

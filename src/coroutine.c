@@ -1,4 +1,5 @@
 #include "coroutine.h"
+#include "common.h"
 
 #include <assert.h>
 
@@ -34,6 +35,7 @@ void coroutine_init(coroutine_t *cr,
     cr->returned = false;
 
     assert(0 == rc);
+    DONT_USE(rc);
 
     cr->callee.uc_link = &cr->caller;
     cr->callee.uc_stack.ss_size = stack_size;

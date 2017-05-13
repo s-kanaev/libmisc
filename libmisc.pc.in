@@ -2,7 +2,7 @@ prefix=@DEST_DIR@
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib
-libname=misc
+libname=libmisc
 
 Name: miscellaneous
 Description: The miscellaneous library

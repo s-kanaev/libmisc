@@ -24,4 +24,4 @@ set_target_properties(coroutine PROPERTIES
                       SOVERSION 0)
 
 install(TARGETS containers io-service coroutine
-        LIBRARY DESTINATION lib/misc)
+        LIBRARY DESTINATION lib/${thelibname})

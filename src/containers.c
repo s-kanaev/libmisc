@@ -1,4 +1,5 @@
 #include "containers.h"
+#include "common.h"
 
 #include <stddef.h>
 #include <stdbool.h>
@@ -136,6 +137,7 @@ void vector_remove(vector_t *v, size_t idx) {
 
     realloced = buffer_realloc(&v->data, v->count * v->element_size);
     assert(realloced);
+    DONT_USE(realloced);
 }
 
 void vector_remove_range(vector_t *v, size_t from, size_t count) {
@@ -161,6 +163,7 @@ void vector_remove_range(vector_t *v, size_t from, size_t count) {
 
     realloced = buffer_realloc(&v->data, v->count * v->element_size);
     assert(realloced);
+    DONT_USE(realloced);
 }
 
 void *vector_insert(vector_t *v, size_t idx) {
@@ -181,6 +184,7 @@ void *vector_insert(vector_t *v, size_t idx) {
     realloced = buffer_realloc(&v->data, v->element_size * (v->count + 1));
 
     assert(realloced);
+    DONT_USE(realloced);
 
     memmove(newpos, newelement, shifting);
 
@@ -195,6 +199,7 @@ void *vector_append(vector_t *v) {
     bool realloc_ret = buffer_realloc(&v->data, filled + v->element_size);
 
     assert(realloc_ret);
+    DONT_USE(realloc_ret);
 
     d = v->data.data + filled;
     ++v->count;
@@ -210,6 +215,7 @@ void *vector_prepend(vector_t *v) {
     bool realloc_ret = buffer_realloc(&v->data, filled + v->element_size);
 
     assert(realloc_ret);
+    DONT_USE(realloc_ret);
 
     memmove(
         v->data.data + v->element_size,

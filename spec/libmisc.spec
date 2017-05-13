@@ -1,30 +1,36 @@
-Summary: Miscellaneous library
-Name: libmisc
-Version: 0.0.1
-Release: 1
-License: WTF
-Group: Libraries
-Source0:    libmisc-%{version}.tar.gz
-#BuildRequires: pkgconfig(alsa)
-#BuildRequires: pkgconfig(vconf)
-#BuildRequires: pkgconfig(iniparser)
-#BuildRequires: pkgconfig(dlog)
-#Provides: libtizen-audio.so
+%define _libdir         /usr/lib
+%define _includedir     /usr/include
+%define _pkgconfdir     /usr/share/pkgconfig
+%define _libname        libmisc
+
+Summary:        Miscellaneous library
+Name:           libmisc
+Version:        0.0.1
+Release:        1
+License:        WTF
+Group:          Libraries
+Source0:        libmisc-%{version}.tar.gz
+BuildRequires:  cmake >= 2.8
+BuildRequires:  gcc >= 4
+Prereq:         /sbin/ldconfig
+Provides:       libmisc
 
 %description
-The library contains epoll-base IO service, coroutines, containers, etc.
+The library contains epoll-based IO service, coroutines, containers, etc.
+
+%package devel
+Requires:       libmisc
+Summary:        libmisc's development files
+Group:          Libraries
+Provides:       libmisc-devel
+
+%description devel
+Header files for use with libmisc's libraries
 
 %prep
-#mkdir build
-#cd build
-#cmake ..
-#cd ..
 %setup -q -n %{name}-%{version}
 
-
 %build
-#mkdir build
-#cd build
 %cmake
 make %{?jobs:-j%jobs}
 
@@ -42,14 +48,21 @@ make install DESTDIR=%{buildroot}
 %postun
 /sbin/ldconfig
 
+%post devel
+/sbin/ldconfig
+
+%postun devel
+/sbin/ldconfig
+
+
 %files
-%defattr(-,root,root,-)
-#
-#%doc README COPYING ChangeLog
-/usr/lib
-/usr/include
+%defattr(-,root,root)
+%dir %{_libdir}/%{_libname}
+%{_libdir}/%{_libname}/lib*.so.*
 
-
-#/usr/bin/eject
-
-#/usr/man/man1/eject.1
+%files devel
+%defattr(-,root,root)
+%dir %{_includedir}/%{_libname}
+%{_includedir}/%{_libname}/*.h
+%{_pkgconfdir}/libmisc.pc
+%{_libdir}/%{_libname}/*.so
