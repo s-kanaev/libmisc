@@ -1,13 +1,15 @@
 #ifndef _CONTAINERS_H_
 # define _CONTAINERS_H_
 
-/** \file containers.h
+/**
+ * \file containers.h
  * Containers/collections library:
  * buffer, vector, array, list, queue, stack
  */
 
+# include "common.h"
+
 # include <stddef.h>
-# include <stdbool.h>
 
 # ifdef __cplusplus
 extern "C" {
@@ -54,7 +56,7 @@ struct list {
     list_element_t *front;
     list_element_t *back;
     size_t count;
-    bool inplace;
+    LIBMISC_BOOL_TYPE inplace;
     size_t element_size;
 };
 
@@ -62,13 +64,14 @@ struct list {
 /**
  * Initialize buffer \c b with initial size \c size and policy \c pol
  */
-void buffer_init(buffer_t *b,
-                 size_t size,
-                 enum buffer_policy pol);
+LIBMISC_INIT_RETURN_TYPE
+buffer_init(buffer_t *b,
+            size_t size,
+            enum buffer_policy pol);
 /**
  * Change buffer \c b size to \c newsize according to buffer's policy
  */
-bool buffer_realloc(buffer_t *b, size_t newsize);
+LIBMISC_BOOL_TYPE buffer_realloc(buffer_t *b, size_t newsize);
 /**
  * Deallocate allocated memory
  */
@@ -79,7 +82,10 @@ void buffer_deinit(buffer_t *b);
  * Initialize vector at \c v with initial number of elements \c count
  * and each element of size \c size
  */
-void vector_init(vector_t *v, size_t size, size_t count);
+LIBMISC_INIT_RETURN_TYPE
+vector_init(vector_t *v,
+            size_t size,
+            size_t count);
 /**
  * Deallocate vector
  */
@@ -138,7 +144,10 @@ void *vector_prev(vector_t *v, void *d);
  * according to value of \c inplace.
  * List element payload size passed in \c size
  */
-void list_init(list_t *l, bool inplace, size_t size);
+LIBMISC_INIT_RETURN_TYPE
+list_init(list_t *l,
+          LIBMISC_BOOL_TYPE inplace,
+          size_t size);
 /**
  * Return number of elements in list
  */

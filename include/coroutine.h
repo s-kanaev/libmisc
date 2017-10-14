@@ -2,6 +2,7 @@
 # define _COROUTINE_H_
 
 # include "containers.h"
+# include "common.h"
 
 # include <ucontext.h>
 # include <stddef.h>
@@ -25,15 +26,17 @@ struct coroutine {
     coroutine_cb_t cb;
     void *ctx;
 
-    bool returned;
+    LIBMISC_BOOL_TYPE returned;
 };
 
-void coroutine_init(coroutine_t *cr,
-                    coroutine_cb_t cb, void *ctx,
-                    size_t stack_size);
+LIBMISC_INIT_RETURN_TYPE
+coroutine_init(coroutine_t *cr,
+               coroutine_cb_t cb,
+               void *ctx,
+               size_t stack_size);
 void coroutine_deinit(coroutine_t *cr);
 void coroutine_continue(coroutine_t *cr);
-bool coroutine_returned(const coroutine_t *cr);
+LIBMISC_BOOL_TYPE coroutine_returned(const coroutine_t *cr);
 void coroutine_yield(coroutine_t *cr);
 
 # ifdef __cplusplus
